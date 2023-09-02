@@ -1,14 +1,27 @@
 import React from "react";
 
-const Buscador = () => {
+const Buscador = ({ data, dataFilter }) => {
+  const inputHandle = (e) => {
+    const find = e.target.value.toLowerCase();
+    const result = data.filter(
+      (item) =>
+        item.nombre.toLowerCase().includes(find) ||
+        item.edad.toLowerCase().includes(find) ||
+        item.cargo.toLowerCase().includes(find) ||
+        item.telefono.toLowerCase().includes(find)
+    );
+    dataFilter(result);
+  };
+
   return (
-    <div className="buscador col-12   col-md-8">
+    <div className="pb-2 ">
       <input
-        className="form-control m-b2"
+        className="form-control "
         type="text"
         name="search"
         id="search"
         placeholder="Buscar Colaborador"
+        onChange={inputHandle}
       />
     </div>
   );

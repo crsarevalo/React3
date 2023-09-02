@@ -12,8 +12,13 @@ function App() {
   return (
     <>
       <h1>Lista de Colaboradores</h1>
-      <Buscador />
-      <Listado data={data} />
+      <Buscador data={data} dataFilter={setDataFilter} />
+      <Listado
+        data={data}
+        dataFilter={dataFilter}
+        setData={setData}
+        setDataFilter={setDataFilter}
+      />
 
       <Formulario />
     </>

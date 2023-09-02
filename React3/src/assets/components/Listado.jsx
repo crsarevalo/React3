@@ -1,8 +1,8 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-const Listado = ({ data }) => {
-  const colaboradores = data.map((item) => (
+const Listado = ({ dataFilter }) => {
+  const colaboradores = dataFilter.map((item) => (
     <tr key={item.id}>
       <td>{item.nombre}</td>
       <td>{item.correo}</td>
