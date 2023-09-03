@@ -8,7 +8,9 @@ const Buscador = ({ data, dataFilter }) => {
         item.nombre.toLowerCase().includes(find) ||
         item.edad.toLowerCase().includes(find) ||
         item.cargo.toLowerCase().includes(find) ||
-        item.telefono.toLowerCase().includes(find)
+        item.telefono.toLowerCase().includes(find) ||
+        //faltaba el correo tambien aqui 
+        item.correo.toLowerCase().includes(find)
     );
     dataFilter(result);
   };
