@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Formulario = ({ data, setData, dataFilter, setDataFilter, addAlert }) => {
+const Formulario = ({ data, setData, setDataFilter, setAlert }) => {
   const [datosColab, setDatosColab] = useState({
     nombre: "",
     correo: "",
@@ -14,75 +14,113 @@ const Formulario = ({ data, setData, dataFilter, setDataFilter, addAlert }) => {
       inputName: "nombre",
       inputEmail: "correo",
       inputAge: "edad",
-      inputPositio: "cargo",
+      inputPosition: "cargo",
       inputPhone: "telefono",
     };
 
     const inputProp = inputs[e.target.id];
     if (inputProp) {
       setDatosColab({ ...datosColab, [inputProp]: e.target.value });
-    }
+    } 
   };
 
-  // COMENT
+  const validardatos = (e) => {
+e.preventDefault() 
+
+
+const {nombre, correo, edad, cargo, telefono} = datosColab
+
+
+const validarValores = !nombre || !correo || !edad || !cargo || !telefono
+
+
+validarValores ? 
+setAlert({
+    error: true,
+    mensaje: "completa los campos",
+    color: "text-danger",
+  })
+  
+: setAlert({
+    error: false,
+    mensaje: "cuenta creada con exito",
+    color: "text-success",
+  });
+
+  setDatosColab({
+    nombre: "",
+    correo: "",
+    edad: "",
+    cargo: "",
+    telefono: "", 
+  });
+
+  }
+
+    const Nuevotrabajador = { ...datosColab, id: data.length + 1 };
+    setData([...data, Nuevotrabajador]);
+    setDataFilter([...data, Nuevotrabajador]); 
+
+
 
   return (
     <div className="formulario text-center bg-dark p-5 rounded">
-      <form noValidate>
+      <form noValidate
+      onSubmit={validardatos} 
+      >
         <div className="mb-2">
           <input
             type="text"
-            value=""
+            value={datosColab.nombre}
             className="form-control"
             id="inputName"
             placeholder="Nombre del Colaborador"
-            //onChange={handleInputs}
+            onChange={handleInputs}
           />
         </div>
         <div className="mb-2">
           <input
             type="email"
-            value=""
+            value={datosColab.correo}
             className="form-control"
             id="inputEmail"
             placeholder="E-mail"
-            //onChange={handleInputs}
+            onChange={handleInputs}
           />
         </div>
         <div className="mb-2">
           <input
             type="number"
-            value=""
+            value={datosColab.edad}
             className="form-control"
             id="inputAge"
             placeholder="Edad"
-            // onChange={handleInputs}
+            onChange={handleInputs}
           />
         </div>
         <div className="mb-2">
           <input
             type="text"
-            value=""
+            value={datosColab.cargo}
             className="form-control"
             id="inputPosition"
             placeholder="Cargo"
-            // onChange={handleInputs}
+            onChange={handleInputs}
           />
         </div>
         <div className="mb-2">
           <input
             type="text"
-            value=""
+            value={datosColab.telefono}
             className="form-control"
             id="inputPhone"
             placeholder="Telefono"
-            // onChange={handleInputs}
+            onChange={handleInputs}
           />
         </div>
 
         <div className="pt-4">
           <button className="btn btn-info " type="submit">
-            {" "}
             Agregar Colaborador
           </button>
         </div>
