@@ -26,7 +26,11 @@ const Formulario = ({ data, setData, dataFilter, setDataFilter, setAlert }) => {
 
   const validardatos = (e) => {
 e.preventDefault() 
+
+
 const {nombre, correo, edad, cargo, telefono} = datosColab
+
+
 const validarValores = !nombre || !correo || !edad || !cargo || !telefono
 
 
@@ -51,8 +55,9 @@ setAlert({
   });
 
   }
+ const Nuevotrabajador ={...datosColab, id:data.length + 1 }
 
-
+setData ([...data, Nuevotrabajador ])
   // COMENT
 
   return (
