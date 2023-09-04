@@ -36,7 +36,8 @@ function App() {
         setDataFilter={setDataFilter}
         />
 
-      <Formulario  data={data}
+      <Formulario 
+       data={data}
         dataFilter={dataFilter}
         setData={setData}
         setDataFilter={setDataFilter}

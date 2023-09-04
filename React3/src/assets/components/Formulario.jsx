@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Formulario = ({ data, setData, dataFilter, setDataFilter, setAlert }) => {
+const Formulario = ({ data, setData, setDataFilter, setAlert }) => {
   const [datosColab, setDatosColab] = useState({
     nombre: "",
     correo: "",
@@ -21,7 +21,7 @@ const Formulario = ({ data, setData, dataFilter, setDataFilter, setAlert }) => {
     const inputProp = inputs[e.target.id];
     if (inputProp) {
       setDatosColab({ ...datosColab, [inputProp]: e.target.value });
-    }
+    } 
   };
 
   const validardatos = (e) => {
@@ -40,6 +40,7 @@ setAlert({
     mensaje: "completa los campos",
     color: "text-danger",
   })
+  
 : setAlert({
     error: false,
     mensaje: "cuenta creada con exito",
@@ -55,10 +56,12 @@ setAlert({
   });
 
   }
- const Nuevotrabajador ={...datosColab, id:data.length + 1 }
 
-setData ([...data, Nuevotrabajador ])
-  // COMENT
+    const Nuevotrabajador = { ...datosColab, id: data.length + 1 };
+    setData([...data, Nuevotrabajador]);
+    setDataFilter([...data, Nuevotrabajador]); 
+
+
 
   return (
     <div className="formulario text-center bg-dark p-5 rounded">
@@ -118,7 +121,6 @@ setData ([...data, Nuevotrabajador ])
 
         <div className="pt-4">
           <button className="btn btn-info " type="submit">
-            {" "}
             Agregar Colaborador
           </button>
         </div>
