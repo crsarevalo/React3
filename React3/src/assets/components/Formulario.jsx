@@ -29,12 +29,7 @@ e.preventDefault()
 const {nombre, correo, edad, cargo, telefono} = datosColab
 const validarValores = !nombre || !correo || !edad || !cargo || !telefono
 
-/*  if (datosColab.nombre.trim() === ""||
-datosColab.correo() === ""||
-datosColab.edad() === ""||
-datosColab.cargo.trim() === ""||
-datosColab.telefono() === ""
- ) {} */
+
 validarValores ? 
 setAlert({
     error: true,
