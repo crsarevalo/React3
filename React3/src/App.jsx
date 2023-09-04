@@ -13,9 +13,9 @@ function App() {
   const [dataFilter, setDataFilter] = useState(data);
   //aqui esta ceteada la alerta
   const [alert, setAlert] = useState({
-  Texto:"", 
-  tipo:"",
-  estado: false
+    error: "",
+    mensaje: "",
+    color: "",
  })
  
  
@@ -36,9 +36,14 @@ function App() {
         setDataFilter={setDataFilter}
         />
 
-      <Formulario />
+      <Formulario  data={data}
+        dataFilter={dataFilter}
+        setData={setData}
+        setDataFilter={setDataFilter}
+        setAlert={setAlert}/>
 
-      <Alert />
+       {alert.mensaje && <Alert color={alert.color} mensaje={alert.mensaje}/>}
+
         </div>
     </>
   );

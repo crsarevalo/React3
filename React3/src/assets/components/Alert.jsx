@@ -1,7 +1,17 @@
 import React from "react";
 
-const Alert = () => {
-  return <div>Alert</div>;
+const Alerta = ({ color, mensaje }) => {
+
+ return (
+  
+<div>
+
+<p className={color}>{mensaje}</p>
+
+</div>
+
+    
+  );
 };
 
-export default Alert;
+export default Alerta;
