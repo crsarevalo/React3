@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+/* import React, { useState } from "react";
 const Formulario = ({ data, setData, setDataFilter, setAlert }) => {
   const [datosColab, setDatosColab] = useState({
     nombre: "",
@@ -48,9 +47,9 @@ setAlert({
   });
   const Nuevotrabajador = { ...datosColab, id: data.length + 1 };
   setData([...data, Nuevotrabajador]);
-   /* setDataFilter([...data, Nuevotrabajador]);  */
+   /* setDataFilter([...data, Nuevotrabajador]);  esto ya estaba cometado  */
 
-  setDatosColab({
+ /*  setDatosColab({
     nombre: "",
     correo: "",
     edad: "",
@@ -58,14 +57,11 @@ setAlert({
     telefono: "", 
   });
 
-  }
+  } */ 
+
+
+
 /* 
-    const Nuevotrabajador = { ...datosColab, id: data.length + 1 };
-    setData([...data, Nuevotrabajador]);
-    setDataFilter([...data, Nuevotrabajador]);  */
-
-
-
   return (
     <div className="formulario text-center bg-dark p-5 rounded">
       <form noValidate
@@ -132,4 +128,4 @@ setAlert({
   );
 };
 
-export default Formulario;
+export default Formulario; */
