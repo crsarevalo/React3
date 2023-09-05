@@ -1,7 +1,16 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-const Listado = ({ data }) => {
+const Listado = ({ dataFilter }) => {
+  const colab = dataFilter.map((item) => (
+    <tr key={item.id}>
+      <td>{item.nombre}</td>
+      <td>{item.correo}</td>
+      <td>{item.edad}</td>
+      <td>{item.cargo}</td>
+      <td>{item.telefono}</td>
+    </tr>
+  ));
   return (
     <div className="table-responsive text-center rounded">
       <Table variant="dark" className="table table-striped">
@@ -14,15 +23,7 @@ const Listado = ({ data }) => {
             <th>Telefono</th>
           </tr>
         </thead>
-        <tbody>{data.map((item) => (
-    <tr key={item.id}>
-      <td>{item.nombre}</td>
-      <td>{item.correo}</td>
-      <td>{item.edad}</td>
-      <td>{item.cargo}</td>
-      <td>{item.telefono}</td>
-    </tr>
-  ))}</tbody>
+        <tbody> {colab}</tbody>
       </Table>
     </div>
   );
