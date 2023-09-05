@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Buscador = ({ data, dataFilter }) => {
+  const [item, setItem ]= useState("")
+  /* console.log("xxx", name ) */
   const inputHandle = (e) => {
-    const find = e.target.value.toLowerCase();
+    const find = item.toLowerCase();
     const result = data.filter(
       (item) =>
         item.nombre.toLowerCase().includes(find) ||
@@ -12,10 +14,11 @@ const Buscador = ({ data, dataFilter }) => {
         //faltaba el correo tambien aqui 
         item.correo.toLowerCase().includes(find)
     );
-    dataFilter(result);
-  };
+    dataFilter(result);};0
 
   return (
+    
+      <form onSubmit={inputHandle} >  
     <div className="pb-2 ">
       <input
         className="form-control "
@@ -23,9 +26,10 @@ const Buscador = ({ data, dataFilter }) => {
         name="search"
         id="search"
         placeholder="Buscar Colaborador"
-        onChange={inputHandle}
-      />
+        onChange={(e) => setItem(e.target.value) }
+        />
     </div>
+        </form>
   );
 };
 

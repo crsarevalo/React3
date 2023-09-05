@@ -46,6 +46,9 @@ setAlert({
     mensaje: "cuenta creada con exito",
     color: "text-success",
   });
+  const Nuevotrabajador = { ...datosColab, id: data.length + 1 };
+  setData([...data, Nuevotrabajador]);
+   /* setDataFilter([...data, Nuevotrabajador]);  */
 
   setDatosColab({
     nombre: "",
@@ -56,10 +59,10 @@ setAlert({
   });
 
   }
-
+/* 
     const Nuevotrabajador = { ...datosColab, id: data.length + 1 };
     setData([...data, Nuevotrabajador]);
-    setDataFilter([...data, Nuevotrabajador]); 
+    setDataFilter([...data, Nuevotrabajador]);  */
 
 
 
