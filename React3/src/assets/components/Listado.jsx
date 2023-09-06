@@ -13,7 +13,7 @@ const Listado = ({ dataFilter }) => {
   ));
   return (
     <div className="table-responsive text-center rounded">
-      <Table variant="dark" className="table table-striped">
+      <Table variant="clear" className="table table-striped">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -23,7 +23,7 @@ const Listado = ({ dataFilter }) => {
             <th>Telefono</th>
           </tr>
         </thead>
-        <tbody> {colab}</tbody>
+        <tbody>{colab}</tbody>
       </Table>
     </div>
   );

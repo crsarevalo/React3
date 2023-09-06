@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Buscador = ({ data, dataFilter }) => {
-  // }}const [item, setItem] = useState("");
-  /* console.log("xxx", name ) */
   const inputHandle = (e) => {
     const find = e.target.value.toLowerCase();
     const result = data.filter(
@@ -19,7 +17,7 @@ const Buscador = ({ data, dataFilter }) => {
   0;
 
   return (
-    <div className="pb-2 ">
+    <div className="col-4 col-lg pb-2 ">
       <input
         className="form-control "
         type="text"

@@ -21,25 +21,29 @@ function App() {
     <>
       <h1>Lista de Colaboradores</h1>
       <Buscador data={data} dataFilter={setDataFilter} />
+      <section>
+        <div className="list">
+          <Listado
+            data={data}
+            dataFilter={dataFilter}
+            setData={setData}
+            setDataFilter={setDataFilter}
+          />
+        </div>
+        <div className="form">
+          <Formulario
+            data={data}
+            dataFilter={dataFilter}
+            setData={setData}
+            setDataFilter={setDataFilter}
+            setAlert={setAlert}
+          />
 
-      <div className="#">
-        <Listado
-          data={data}
-          dataFilter={dataFilter}
-          setData={setData}
-          setDataFilter={setDataFilter}
-        />
-
-        <Formulario
-          data={data}
-          dataFilter={dataFilter}
-          setData={setData}
-          setDataFilter={setDataFilter}
-          setAlert={setAlert}
-        />
-
-        {alert.mensaje && <Alert color={alert.color} mensaje={alert.mensaje} />}
-      </div>
+          {alert.mensaje && (
+            <Alert color={alert.color} mensaje={alert.mensaje} />
+          )}
+        </div>
+      </section>
     </>
   );
 }

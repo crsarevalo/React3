@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const Formulario = ({ data, setData, setDataFilter, setAlert }) => {
+const Formulario = ({ data, setData, setDataFilter, dataFilter, setAlert }) => {
   const [datosColab, setDatosColab] = useState({
     nombre: "",
     correo: "",
@@ -23,32 +23,70 @@ const Formulario = ({ data, setData, setDataFilter, setAlert }) => {
     }
   };
 
-  const validardatos = (e) => {
+  const validarDatos = (e) => {
     e.preventDefault();
+    const emailValidation =
+      /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
-    const { nombre, correo, edad, cargo, telefono } = datosColab;
-
-    const validarValores = !nombre || !correo || !edad || !cargo || !telefono;
-
-    validarValores
-      ? setAlert({
-          error: true,
-          mensaje: "completa los campos",
-          color: "text-danger",
-        })
-      : setAlert({
+    if (
+      datosColab.nombre.trim() === "" ||
+      datosColab.correo.trim() === "" ||
+      datosColab.edad.trim() === "" ||
+      datosColab.cargo.trim() === "" ||
+      datosColab.telefono.trim() === ""
+    ) {
+      setAlert({
+        error: true,
+        mensaje: "completa los campos",
+        color: "text-danger",
+      });
+      setTimeout(() => {
+        setAlert({
           error: false,
-          mensaje: "cuenta creada con exito",
-          color: "text-success",
+          mensaje: "",
+          color: "",
         });
+      }, 5000);
+      return;
+    }
+
+    if (!emailValidation.test(datosColab.correo)) {
+      setAlert({
+        error: true,
+        mensaje: "ingrese un correo valido",
+        color: "text-danger",
+      });
+      setTimeout(() => {
+        setAlert({
+          error: false,
+          mensaje: "",
+          color: "",
+        });
+      }, 5000);
+      return;
+    }
+    setAlert({
+      error: false,
+      mensaje: "colaborador agregado con exito",
+      color: "text-success",
+    });
+
+    setTimeout(() => {
+      setAlert({
+        error: false,
+        mensaje: "",
+        color: "",
+      });
+    }, 5000);
+
     const Nuevotrabajador = { ...datosColab, id: data.length + 1 };
     setData([...data, Nuevotrabajador]);
-    setDataFilter([...data, Nuevotrabajador]);
+    setDataFilter([...dataFilter, Nuevotrabajador]);
   };
 
   return (
-    <div className="formulario text-center bg-dark p-5 rounded">
-      <form noValidate onSubmit={validardatos}>
+    <div className="formulario m-4 text-center bg-dark p-5 rounded">
+      <form noValidate onSubmit={validarDatos}>
         <div className="mb-2">
           <input
             type="text"
