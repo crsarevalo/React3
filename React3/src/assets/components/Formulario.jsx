@@ -82,6 +82,14 @@ const Formulario = ({ data, setData, setDataFilter, dataFilter, setAlert }) => {
     const Nuevotrabajador = { ...datosColab, id: data.length + 1 };
     setData([...data, Nuevotrabajador]);
     setDataFilter([...dataFilter, Nuevotrabajador]);
+
+    setDatosColab({
+      nombre: "",
+      correo: "",
+      edad: "",
+      cargo: "",
+      telefono: "",
+    });
   };
 
   return (
